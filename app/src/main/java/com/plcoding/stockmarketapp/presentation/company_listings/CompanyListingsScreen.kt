@@ -3,7 +3,6 @@ package com.plcoding.stockmarketapp.presentation.company_listings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -30,7 +29,7 @@ fun CompanyListingsScreen(
         OutlinedTextField(
             value = state.searchQuery,
             onValueChange = {
-                viewModel.OnEvent(CompanyListingsEvent.OnSearchQueryChange(it))
+                viewModel.onEvent(CompanyListingsEvent.OnSearchQueryChange(it))
             },
             modifier = Modifier
                 .padding(16.dp)
@@ -44,7 +43,7 @@ fun CompanyListingsScreen(
         SwipeRefresh(
             state = swipeRefreshState,
             onRefresh = {
-                viewModel.OnEvent(CompanyListingsEvent.Refresh)
+                viewModel.onEvent(CompanyListingsEvent.Refresh)
             }
         ) {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
