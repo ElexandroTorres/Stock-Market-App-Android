@@ -1,5 +1,6 @@
 package com.plcoding.stockmarketapp.data.repository
 
+import android.util.Log
 import com.plcoding.stockmarketapp.data.csv.CSVParser
 import com.plcoding.stockmarketapp.data.local.StockDatabase
 import com.plcoding.stockmarketapp.data.mapper.toCompanyListing
@@ -55,6 +56,9 @@ class StockRepositoryImpl @Inject constructor(
                 emit(Resource.Error("Couldn't load data"))
                 null
             }
+
+            val teste = api.getListings()
+            Log.d("teste", teste.string())
 
             remoteListings?.let { listings ->
                 dao.clearCompanyListings()
