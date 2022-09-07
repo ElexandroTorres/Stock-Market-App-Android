@@ -20,8 +20,8 @@ interface StockDao {
         """
             SELECT *
             FROM companylistingentity
-            WHERE LOWER(name) LIKE ('%' || LOWER(:query) || '%') OR
-            UPPER(:query) == symbol
+            WHERE LOWER(name) LIKE (LOWER(:query) || '%') OR
+            symbol LIKE (UPPER(:query) || '%')
         """
     )
     suspend fun searchCompanyListing(query : String) : List<CompanyListingEntity>
